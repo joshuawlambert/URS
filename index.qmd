@@ -14,6 +14,7 @@ filters:
 
 ## The Costco Food Sample Analogy
 
+![Costco](sample.jpeg)
 Think of statistical inference like sampling food at Costco. When you try a free sample, you're tasting a small portion of a much larger product. Your impression of the sample influences your decision on whether to purchase the entire product. Similarly, in research, a sample represents a subset of the population, and conclusions drawn from this sample help infer characteristics or outcomes for the whole population.
 
 This metaphor helps make the abstract concept of statistical inference more tangible and relatable for undergraduate nursing students.
@@ -32,34 +33,58 @@ Understanding patient satisfaction is crucial for improving healthcare services.
 
 We'll use **Shiny for Python** to conduct our analysis and create an **interactive presentation** to showcase our findings.
 
-### Interactive Shiny App
+### Step 1: Collecting the Sample Data
+
+Imagine each hospital’s patient satisfaction scores as samples from the overall patient population.
 
 ```{shinylive-python}
 #| standalone: true
 
 from shiny import App, render, ui
 import pandas as pd
-import numpy as np
-from scipy import stats
 
 # Sample data for Hospital A and Hospital B
 hospital_a = [4.5, 4.0, 3.5, 5.0, 4.2]
 hospital_b = [3.8, 4.1, 3.9, 4.3, 4.0]
 
-# Calculate descriptive statistics
-mean_a = np.mean(hospital_a)
-mean_b = np.mean(hospital_b)
-sd_a = np.std(hospital_a, ddof=1)
-sd_b = np.std(hospital_b, ddof=1)
-
-# Perform t-test
-t_stat, p_value = stats.ttest_ind(hospital_a, hospital_b)
-
-# Create data frames for the tables
 data = pd.DataFrame({
     'Hospital A': hospital_a,
     'Hospital B': hospital_b
 })
+
+app_ui = ui.page_fluid(
+    ui.h2("Step 1: Collecting the Sample Data"),
+    ui.output_table("data_table")
+)
+
+def server(input, output, session):
+    @output
+    @render.table
+    def data_table():
+        return data
+
+app = App(app_ui, server)
+```
+
+### Step 2: Descriptive Statistics
+We calculate the mean and standard deviation to summarize the data.
+
+```{shinylive-python}
+#| standalone: true
+
+from shiny import App, render, ui
+import numpy as np
+import pandas as pd
+
+# Sample data
+hospital_a = [4.5, 4.0, 3.5, 5.0, 4.2]
+hospital_b = [3.8, 4.1, 3.9, 4.3, 4.0]
+
+# Calculations
+mean_a = np.mean(hospital_a)
+mean_b = np.mean(hospital_b)
+sd_a = np.std(hospital_a, ddof=1)
+sd_b = np.std(hospital_b, ddof=1)
 
 summary_table = pd.DataFrame({
     'Hospital': ['A', 'B'],
@@ -67,39 +92,81 @@ summary_table = pd.DataFrame({
     'Standard Deviation': [round(sd_a, 2), round(sd_b, 2)]
 })
 
-results = pd.DataFrame({
-    'Statistic': ['t-value', 'p-value'],
-    'Value': [round(t_stat, 2), round(p_value, 3)]
-})
-
-# Define UI
 app_ui = ui.page_fluid(
-    ui.h2("Step 1: Collecting the Sample Data"),
-    ui.output_table("data_table"),
     ui.h2("Step 2: Descriptive Statistics"),
-    ui.output_table("summary_table"),
-    ui.h2("Step 3: Hypothesis Testing"),
-    ui.output_table("t_test_results"),
-    ui.h2("Step 4: Interpreting the Results"),
-    ui.markdown(f"**p-value:** {round(p_value, 3)}\n\n**Interpretation:** {'There is a significant difference in patient satisfaction scores between the two hospitals.' if p_value < 0.05 else 'There is no significant difference in patient satisfaction scores between the two hospitals.'}")
+    ui.output_table("summary_table")
 )
 
-# Define server logic
 def server(input, output, session):
-    @output
-    @render.table
-    def data_table():
-        return data
-
     @output
     @render.table
     def summary_table():
         return summary_table
 
+app = App(app_ui, server)
+```
+
+### Step 3: Hypothesis Testing
+We perform a t-test to determine if there is a significant difference between the two hospitals' satisfaction scores.
+
+```{shinylive-python}
+#| standalone: true
+
+from shiny import App, render, ui
+from scipy import stats
+import pandas as pd
+
+# Sample data
+hospital_a = [4.5, 4.0, 3.5, 5.0, 4.2]
+hospital_b = [3.8, 4.1, 3.9, 4.3, 4.0]
+
+# Perform t-test
+t_stat, p_value = stats.ttest_ind(hospital_a, hospital_b)
+
+# Results
+results = pd.DataFrame({
+    'Statistic': ['t-value', 'p-value'],
+    'Value': [round(t_stat, 2), round(p_value, 3)]
+})
+
+app_ui = ui.page_fluid(
+    ui.h2("Step 3: Hypothesis Testing"),
+    ui.output_table("t_test_results")
+)
+
+def server(input, output, session):
     @output
     @render.table
     def t_test_results():
         return results
+
+app = App(app_ui, server)
+```
+
+### Step 4: Interpreting the Results
+Evaluate the p-value from the t-test to decide whether to reject the null hypothesis (no difference in satisfaction scores).
+
+```{shinylive-python}
+#| standalone: true
+
+from shiny import App, render, ui
+
+# p-value from previous step
+p_value = 0.106  # Example value
+
+# Interpretation
+if p_value < 0.05:
+    interpretation = "There is a significant difference in patient satisfaction scores between the two hospitals."
+else:
+    interpretation = "There is no significant difference in patient satisfaction scores between the two hospitals."
+
+app_ui = ui.page_fluid(
+    ui.h2("Step 4: Interpreting the Results"),
+    ui.markdown(f"**p-value:** {p_value}\n\n**Interpretation:** {interpretation}")
+)
+
+def server(input, output, session):
+    pass  # No dynamic elements needed
 
 app = App(app_ui, server)
 ```
