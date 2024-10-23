@@ -18,8 +18,8 @@ import matplotlib.pyplot as plt
 
 app_ui = ui.page_fluid(
     ui.h2("Interactive Data Analysis"),
-    ui.layout_sidebar(
-        sidebar=ui.sidebar(
+    ui.row(
+        ui.column(4,
             ui.input_slider("n", "Number of points", 10, 100, 50),
             ui.input_select(
                 "dist", 
@@ -27,9 +27,11 @@ app_ui = ui.page_fluid(
                 {"norm": "Normal", "unif": "Uniform", "exp": "Exponential"}
             )
         ),
-        main=ui.output_plot("histogram"),
-    ),
-    ui.output_table("summary")
+        ui.column(8,
+            ui.output_plot("histogram"),
+            ui.output_table("summary")
+        )
+    )
 )
 
 def server(input, output, session):
@@ -44,7 +46,7 @@ def server(input, output, session):
         else:
             data = np.random.exponential(1, n)
             
-        plt.figure()
+        plt.figure(figsize=(8, 6))
         plt.hist(data, bins=20)
         plt.title(f"{input.dist()} Distribution")
         return plt
@@ -63,10 +65,10 @@ def server(input, output, session):
         return pd.DataFrame({
             'Statistic': ['Mean', 'Std Dev', 'Min', 'Max'],
             'Value': [
-                np.mean(data),
-                np.std(data),
-                np.min(data),
-                np.max(data)
+                round(np.mean(data), 3),
+                round(np.std(data), 3),
+                round(np.min(data), 3),
+                round(np.max(data), 3)
             ]
         })
 
