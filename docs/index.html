@@ -162,10 +162,10 @@ def server(input, output, session):
         else:
             data = np.random.exponential(1, n)
             
-        plt.figure(figsize=(8, 6))
-        plt.hist(data, bins=20)
-        plt.title(f"{input.dist()} Distribution")
-        return plt
+        fig, ax = plt.subplots(figsize=(8, 6))
+        ax.hist(data, bins=20)
+        ax.set_title(f"{input.dist()} Distribution")
+        return fig
     
     @output
     @render.table
