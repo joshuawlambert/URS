@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "My Shiny WebAssembly App"
+  title: "CoN URS"
   navbar:
     left:
       - href: index.qmd

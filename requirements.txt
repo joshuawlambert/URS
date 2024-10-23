@@ -1,5 +1,7 @@
-pandas
+shiny
 numpy
+pandas
 matplotlib
 shinylive
 jupyter
+scipy
