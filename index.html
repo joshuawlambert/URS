@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr.&nbsp;Joshua Lambert, Associate Professor, College of Nursing UC">
+
+<title>Understanding Statistical Inference in Nursing Research</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Understanding Statistical Inference in Nursing Research</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr.&nbsp;Joshua Lambert, Associate Professor, College of Nursing UC </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction-to-statistical-inference" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-statistical-inference">Introduction to Statistical Inference</h2>
+<p><strong>Statistical inference</strong> is the process of drawing conclusions about a population based on data collected from a <em>sample</em> of that population. It enables researchers to make predictions, test hypotheses, and make informed decisions without examining every person in the population. In nursing research, statistical inference is essential for validating findings that can improve patient care and healthcare outcomes.</p>
+</section>
+<section id="the-costco-food-sample-analogy" class="level2">
+<h2 class="anchored" data-anchor-id="the-costco-food-sample-analogy">The Costco Food Sample Analogy🍿</h2>
+<p><img src="sample.jpeg" class="img-fluid" alt="Costco"> Think of statistical inference like sampling food at Costco 🛒. When you try a free sample, you’re tasting a small portion and variety of a much larger product line. Your impression of the sample influences your decision on whether to purchase the entire product. Your taste buds, smell and other human sensory capabilities influences your decision to buy or not buy the product. Similarly, in research, a sample represents a subset of the population, and conclusions drawn from this sample help infer characteristics or outcomes for the whole population.</p>
+</section>
+<section id="research-example-evaluating-patient-satisfaction" class="level2">
+<h2 class="anchored" data-anchor-id="research-example-evaluating-patient-satisfaction">Research Example: Evaluating Patient Satisfaction</h2>
+<section id="research-question" class="level3">
+<h3 class="anchored" data-anchor-id="research-question">Research Question</h3>
+<p><em>Does the average patient satisfaction score differ associate with Patient Length of Stay, Complications, or the Patient to Nurse Ratio?</em></p>
+</section>
+<section id="importance-of-the-study" class="level3">
+<h3 class="anchored" data-anchor-id="importance-of-the-study">Importance of the Study</h3>
+<p>This research will contribute valuable insights that promote better care practices, align with healthcare policies, and support a holistic understanding of the dynamics that impact patient experiences.</p>
+</section>
+<section id="why-these-the-question-and-the-importance-of-the-question-matter" class="level3">
+<h3 class="anchored" data-anchor-id="why-these-the-question-and-the-importance-of-the-question-matter">Why these the Question and the Importance of the Question Matter</h3>
+<p>The research question and its importance are essential for effective statistical analysis, as they provide a clear focus and direction for the study. A well-defined research question guides the selection of appropriate statistical methods and ensures that the analysis is relevant and tailored to specific inquiries. By grounding statistical work in a meaningful research question, researchers can ensure their findings contribute to knowledge and practice in their field, leading to informed decision-making and quality improvement initiatives.</p>
+</section>
+</section>
+<section id="performing-statistical-inference-a-simple-tutorial" class="level2">
+<h2 class="anchored" data-anchor-id="performing-statistical-inference-a-simple-tutorial">Performing Statistical Inference: A Simple Tutorial</h2>
+<section id="step-1-collecting-the-sample-data" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-collecting-the-sample-data">Step 1: Collecting the Sample Data</h3>
+<p>Just like at Costco, our first step is to collect a sample. Imagine we collect 30 <strong>random</strong> patient satisfaction scores from a local hospital as our sample from the overall patient population in the US. We also collect other characteristics which we believe influence/impact that score.</p>
+
+
+
+
+
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+    <style>
+        table.sortable {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        table.sortable th, table.sortable td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        
+        table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
+            content: " \25B4\25BE";
+        }
+        
+        table.sortable th.sorttable_sorted:after {
+            content: " \25BE";
+        }
+        
+        table.sortable th.sorttable_sorted_reverse:after {
+            content: " \25B4";
+        }
+        
+        table.sortable tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        table.sortable tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+
+
+    
+<table class="sortable table" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Patient ID</th>
+<th data-quarto-table-cell-role="th">Patient Satisfaction Score</th>
+<th data-quarto-table-cell-role="th">Length of Stay (Days)</th>
+<th data-quarto-table-cell-role="th">Complications</th>
+<th data-quarto-table-cell-role="th">Patient to Nurse Ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>P13</td>
+<td>95</td>
+<td>4</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>P1</td>
+<td>92</td>
+<td>7</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>P6</td>
+<td>90</td>
+<td>5</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>P20</td>
+<td>88</td>
+<td>2</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>P12</td>
+<td>86</td>
+<td>6</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>P23</td>
+<td>83</td>
+<td>3</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>P19</td>
+<td>81</td>
+<td>5</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>P2</td>
+<td>78</td>
+<td>7</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>P28</td>
+<td>75</td>
+<td>3</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>P27</td>
+<td>72</td>
+<td>6</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>P26</td>
+<td>70</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>P18</td>
+<td>68</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>P11</td>
+<td>65</td>
+<td>4</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>P14</td>
+<td>62</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>P8</td>
+<td>60</td>
+<td>5</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>P25</td>
+<td>58</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>P16</td>
+<td>55</td>
+<td>2</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>P22</td>
+<td>53</td>
+<td>7</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>P5</td>
+<td>50</td>
+<td>4</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>P7</td>
+<td>48</td>
+<td>8</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>P29</td>
+<td>45</td>
+<td>5</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>P3</td>
+<td>42</td>
+<td>8</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>P30</td>
+<td>40</td>
+<td>5</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>P24</td>
+<td>38</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>P10</td>
+<td>35</td>
+<td>2</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>P9</td>
+<td>30</td>
+<td>9</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>P4</td>
+<td>28</td>
+<td>7</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>P15</td>
+<td>25</td>
+<td>6</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>P17</td>
+<td>20</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>P21</td>
+<td>15</td>
+<td>5</td>
+<td>1</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+
+
+
+</section>
+<section id="step-2-drawing-some-intial-conclusions" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-drawing-some-intial-conclusions">Step 2: Drawing some intial conclusions</h3>
+<p>We use tables and figures to draw general conclusions about our data before we dive into more detailed statistical tests. I often explain this process to my students by saying it’s like going on a “date” with our data. This “date” helps us get a feel for the data and allows us to apply our intuition to the large amounts of information we’ve gathered.</p>
+<p>Think of it like sampling food at Costco 🛒. Before deciding whether to take a full sample to try, we first look at the initial presentation of the food. Those tables and figures give us that first impression, helping us understand if we want to explore further. <img src="histograms.png" class="img-fluid"> The hospital data analysis reveals several key patterns across four metrics. Patient satisfaction scores average around 81 out of 100, with most scores clustered in the 80-85 range, indicating generally positive patient experiences. The typical length of stay is 5 days, showing three bins of patients in the 2-4, 5-6, and 7+ ranges. Notably, complications were present in about 73% of cases, which is a concerning rate that may warrant further investigation. The patient-to-nurse ratio distribution shows most patients have a nurse with 2-4 patients, with an average of 2.93 patients per nurse (Kim et al.&nbsp;(2019) reported that when the patient-to-nurse ratio exceeded 2.5 the risk of mortality increased significantly.)</p>
+</section>
+<section id="step-3-plotting-relationships" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-plotting-relationships">Step 3: Plotting relationships 📊</h3>
+<p>At Costco, we opt to sample the food. The initial tastes and aromas significantly influence our preferences for the products. Similarly, in statistics, we aim to create visual representations of the relationships we want to explore, allowing us to assess whether there is any visual evidence of a connection. These preliminary evaluations should meet the “interocular trauma” test, meaning they should be immediately obvious—essentially, they should “hit you between the eyes.” Do these graphs reveal relationships that warrant claiming a connection could exist?</p>
+<p><img src="bivariate_graphs.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="doing-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="doing-statistics">Doing STATISTICS!</h2>
+<p>Now that we have laid out all the data, tables, and figures, we need to complete a rigorous and unbiased analysis of what they truly convey. The historical roots of statistics lie in agriculture🌾, where it was developed to aid farmers 🚜 in maximizing crop yields 🌱 to meet the demands of a growing population in the United States. This foundational purpose highlights the essential role of data-driven decision-making in addressing real-world challenges. With the advent of the Electronic Health Record (EHR), these statistical methods were adapted by biostatisticians to enhance healthcare research and practice. This transition allowed for a more systematic approach to data analysis within the healthcare sector, enabling researchers and healthcare organizations to extract valuable insights from large datasets. By leveraging statistical methods, professionals can identify trends and patterns that inform strategies to improve patient care, enhance staff productivity, and ultimately reduce costs. This evolution underscores the importance of rigorous statistical analysis in today’s healthcare landscape, as it empowers organizations to make informed decisions that positively impact patient outcomes and operational efficiency. As we engage with our current analysis, we must remain mindful of this historical context, ensuring that our interpretations are not only accurate but also contribute meaningfully to the ongoing pursuit of quality improvement in healthcare.</p>
+<section id="remembering-why" class="level3">
+<h3 class="anchored" data-anchor-id="remembering-why">Remembering Why💭</h3>
+<p>Before we venture into the statistical analysis, I always like to remind myself of why I’m doing this. Our research question was:</p>
+<p><em>Does the average patient satisfaction score differ associate with Patient Length of Stay, Complications, or the Patient to Nurse Ratio?</em></p>
+<p>Or in terms of our Costco example, <em>should I buy this product</em>?</p>
+</section>
+<section id="how-do-we-rigorously-test" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-we-rigorously-test">How do we rigorously test?🤔</h3>
+<p>Ultimately, the decision to buy or not to buy is anything but straightforward! We humans are complex creatures, and our choices often boil down to a variety of criteria: taste, smell, texture, nutrition, cost, or whether my 7-year-old will still look me in the eye if I walk out of the store without those dinosaur-shaped chicken nuggets.</p>
+<p>Deciding whether there’s a relationship in data is like deciding to buy the product you just tasted. If all the signs are in favor on the research question, and the statistical evidence is sufficient, we can decide to “buy” that the answer to our questions likely favor what we assumed the answer to be.</p>
+</section>
+<section id="correlation-test" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-test">Correlation Test</h3>
+<p>Let’s break down the correlation test—think of it as figuring out if your cravings grow with the number of Costco samples you turn down. Correlation measures how closely two variables move together:</p>
+<p>Positive Correlation 📈: More sample stations you pass equals more cravings.</p>
+<p>Negative Correlation 📉: More sample stations you pass equals less money in your pocket.</p>
+<p>No Correlation : Passing sample stations doesn’t affect your desire for kale.</p>
+<p>To calculate correlation, we use Pearson’s correlation coefficient, <em>r</em>, which ranges from -1 to +1. A strong positive <em>r</em> (like 0.85) suggests that passing more sample stations will contribute strongly to the more cravings you have! If it were less, then it would contribute less strongly.</p>
+<p>The Correlation Test tests whether the true correlation at the population level is equal to 0 or something different from 0. A small p-value (0.05 typically, is measure for whether what I saw was due to chance) indicates that it is likely that the true correlation at the population level is different from 0.</p>
+</section>
+<section id="t-test" class="level3">
+<h3 class="anchored" data-anchor-id="t-test">T-Test</h3>
+<p>Now, let’s tackle the t-test—think of it as the ultimate showdown between two Costco samples. It helps us determine if there’s a significant difference between the averages of two groups, like how much you love those mini pizza bites compared to those mysterious vegetable rolls.</p>
+<p>Imagine you want to see if your friends love pizza bites more than those vegetable rolls. The t-test will help you answer the burning question: “Are pizza bites truly the snack of the gods, or are the veggie rolls just misunderstood?”</p>
+<p>The result of the t-test gives us a p-value. If the p-value is low (typically below 0.05), we reject the null hypothesis and declare that pizza bites are indeed the reigning champion of Costco sample snacks.</p>
+</section>
+<section id="applied-to-our-example" class="level3">
+<h3 class="anchored" data-anchor-id="applied-to-our-example">Applied to our Example</h3>
+<p><em>Length of Stay Correlation</em> There is a weak negative correlation (r = -0.27) between patient satisfaction and length of stay. However, with a p-value of 0.15😩, this correlation is not statistically significant meaning that the correlation we observed cannot be discerned from 0 at the population level.</p>
+<p><em>Nurse Ratio Correlation</em> The correlation between patient satisfaction and nurse ratio is very weak positive (r = 0.13). With a p-value of 0.50😩, this relationship is not statistically significant meaning that the correlation we observed cannot be discerned from 0 at the population level.</p>
+<p><em>Complications Analysis</em> The t-test comparing patient satisfaction scores between patients with and without complications shows no significant difference (p = 0.96 😩). This suggests that the presence of complications does not significantly impact patient satisfaction scores.</p>
+<p><em>Overall Interpretation</em> None of the analyzed relationships demonstrate statistical significance, suggesting that patient satisfaction in this dataset is not strongly influenced by length of stay, nurse ratios, or the presence of complications.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion🤌</h2>
+<p>Ultimately we decided (from our rigorous analysis of the tables, figures and statistical tests) to not “buy” our research question. It is important to note that when you do not find evidence for your research question, it doesn’t mean that you say “It is not true” rather we say we did not find evidence in this study for it. Who knows, if we went to Costco on another day, we may have ran across that yummy Cretors Popcorn which almost always an insta-buy.😍</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="popcorn.jpg" class="img-fluid figure-img" width="467"></p>
+</figure>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

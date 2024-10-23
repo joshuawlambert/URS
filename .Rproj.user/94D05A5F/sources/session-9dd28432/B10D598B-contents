@@ -1,0 +1,193 @@
+---
+title: "URS Presentation -- Analyzing Research Data"
+author: "Dr. Joshua Lambert"
+format: 
+  html:
+    code-fold: true
+    theme: cosmo
+---
+
+## Introduction to Statistical Analysis
+
+Statistical analysis is fundamental to research. It helps us:
+- Make informed decisions from data
+- Quantify uncertainty
+- Test hypotheses
+- Draw meaningful conclusions
+
+## Data Cleaning and Exploration
+
+Let's start with an interactive example of data cleaning and exploration using a sample dataset of student test scores:
+
+```{ojs}
+//| echo: true
+viewof rawData = Inputs.textarea({
+  label: "Enter/Edit Sample Data (CSV format)",
+  value: `student,score,study_hours
+Alice,85,3.5
+Bob,92,4.0
+Charlie,78,2.5
+Diana,95,5.0
+Eve,88,3.0
+Frank,,-1
+Grace,105,4.5`,
+  rows: 8
+})
+
+// Parse and clean the data
+cleanData = {
+  let parsed = d3.csvParse(rawData);
+  return parsed.filter(d => {
+    // Remove invalid scores (null or outside 0-100)
+    let score = +d.score;
+    let hours = +d.study_hours;
+    return !isNaN(score) && score >= 0 && score <= 100 &&
+           !isNaN(hours) && hours >= 0;
+  });
+}
+
+// Display cleaning summary
+{
+  let original = d3.csvParse(rawData).length;
+  let cleaned = cleanData.length;
+  let removed = original - cleaned;
+  return md`**Data Cleaning Summary:**
+  - Original records: ${original}
+  - Valid records: ${cleaned}
+  - Removed records: ${removed}
+  - Common issues: Invalid scores, negative study hours`;
+}
+```
+
+## Interactive Data Visualization
+
+Let's explore the relationship between study hours and test scores:
+
+```{ojs}
+//| echo: true
+Plot = require("@observablehq/plot")
+
+viewof plotType = Inputs.radio(
+  ["Scatter", "Box", "Violin"],
+  { label: "Plot Type:", value: "Scatter" }
+)
+
+plot = {
+  if (plotType === "Scatter") {
+    return Plot.plot({
+      grid: true,
+      y: {label: "Test Score"},
+      x: {label: "Study Hours"},
+      marks: [
+        Plot.dot(cleanData, {
+          x: "study_hours",
+          y: "score",
+          fill: "steelblue"
+        }),
+        Plot.regressionLine(cleanData, {
+          x: "study_hours",
+          y: "score",
+          stroke: "red"
+        })
+      ]
+    })
+  } else if (plotType === "Box") {
+    return Plot.plot({
+      y: {label: "Test Score"},
+      marks: [
+        Plot.boxplot(cleanData, {
+          y: "score",
+          fill: "steelblue"
+        })
+      ]
+    })
+  } else {
+    return Plot.plot({
+      y: {label: "Test Score"},
+      marks: [
+        Plot.violinDensity(cleanData, {
+          y: "score",
+          fill: "steelblue"
+        })
+      ]
+    })
+  }
+}
+```
+
+## Statistical Inference
+
+Let's perform some basic statistical analysis:
+
+```{ojs}
+//| echo: true
+// Calculate basic statistics
+stats = {
+  let scores = cleanData.map(d => +d.score);
+  return {
+    mean: d3.mean(scores).toFixed(2),
+    median: d3.median(scores).toFixed(2),
+    std: d3.deviation(scores).toFixed(2),
+    min: d3.min(scores),
+    max: d3.max(scores)
+  }
+}
+
+md`### Summary Statistics
+- Mean Score: ${stats.mean}
+- Median Score: ${stats.median}
+- Standard Deviation: ${stats.std}
+- Range: ${stats.min} - ${stats.max}`
+
+// Simple hypothesis test
+viewof nullMean = Inputs.number({
+  label: "Hypothesized Population Mean",
+  value: 85,
+  step: 1
+})
+
+hypothesisTest = {
+  let scores = cleanData.map(d => +d.score);
+  let n = scores.length;
+  let sampleMean = d3.mean(scores);
+  let sampleStd = d3.deviation(scores);
+  let se = sampleStd / Math.sqrt(n);
+  let tStat = (sampleMean - nullMean) / se;
+  let pValue = 2 * (1 - jStat.normal.cdf(Math.abs(tStat), 0, 1));
+  
+  return md`### One-Sample t-test
+  - Test Statistic: ${tStat.toFixed(3)}
+  - P-value: ${pValue.toFixed(4)}
+  - Decision: ${pValue < 0.05 ? "Reject" : "Fail to reject"} null hypothesis at α = 0.05`
+}
+```
+
+## Making Decisions from Data
+
+When analyzing research data, consider:
+
+1. Data Quality
+   - Check for missing values
+   - Identify outliers
+   - Validate data ranges
+
+2. Exploratory Analysis
+   - Visualize distributions
+   - Look for patterns
+   - Identify relationships
+
+3. Statistical Testing
+   - Choose appropriate tests
+   - Set significance levels
+   - Interpret results carefully
+
+4. Drawing Conclusions
+   - Consider practical significance
+   - Account for limitations
+   - Make recommendations
+
+## Resources for Further Learning
+
+- R for Data Science: [r4ds.had.co.nz](https://r4ds.had.co.nz)
+- Observable JS Documentation: [observablehq.com/@observablehq/documentation](https://observablehq.com/@observablehq/documentation)
+- Statistical Learning: [statlearning.com](https://www.statlearning.com)
