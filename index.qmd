@@ -84,47 +84,47 @@ Just like at Costco, our first step is to collect a sample. Imagine we collect 3
 </head>
 <body>
     <table class="sortable">
-    <thead>
-        <tr>
-            <th>Patient ID</th>
-            <th>Patient Satisfaction Score</th>
-            <th>Length of Stay (Days)</th>
-            <th>Complications</th>
-            <th>Patient to Nurse Ratio</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr><td>P13</td><td>95</td><td>4</td><td>1</td><td>2</td></tr>
-        <tr><td>P1</td><td>92</td><td>7</td><td>0</td><td>3</td></tr>
-        <tr><td>P6</td><td>90</td><td>5</td><td>1</td><td>3</td></tr>
-        <tr><td>P20</td><td>88</td><td>2</td><td>1</td><td>4</td></tr>
-        <tr><td>P12</td><td>86</td><td>6</td><td>1</td><td>3</td></tr>
-        <tr><td>P23</td><td>83</td><td>3</td><td>0</td><td>4</td></tr>
-        <tr><td>P19</td><td>81</td><td>5</td><td>1</td><td>2</td></tr>
-        <tr><td>P2</td><td>78</td><td>7</td><td>1</td><td>4</td></tr>
-        <tr><td>P28</td><td>75</td><td>3</td><td>1</td><td>3</td></tr>
-        <tr><td>P27</td><td>72</td><td>6</td><td>1</td><td>4</td></tr>
-        <tr><td>P26</td><td>70</td><td>3</td><td>1</td><td>2</td></tr>
-        <tr><td>P18</td><td>68</td><td>3</td><td>1</td><td>2</td></tr>
-        <tr><td>P11</td><td>65</td><td>4</td><td>1</td><td>3</td></tr>
-        <tr><td>P14</td><td>62</td><td>8</td><td>1</td><td>4</td></tr>
-        <tr><td>P8</td><td>60</td><td>5</td><td>0</td><td>3</td></tr>
-        <tr><td>P25</td><td>58</td><td>2</td><td>1</td><td>3</td></tr>
-        <tr><td>P16</td><td>55</td><td>2</td><td>1</td><td>4</td></tr>
-        <tr><td>P22</td><td>53</td><td>7</td><td>0</td><td>3</td></tr>
-        <tr><td>P5</td><td>50</td><td>4</td><td>0</td><td>2</td></tr>
-        <tr><td>P7</td><td>48</td><td>8</td><td>0</td><td>3</td></tr>
-        <tr><td>P29</td><td>45</td><td>5</td><td>1</td><td>3</td></tr>
-        <tr><td>P3</td><td>42</td><td>8</td><td>0</td><td>2</td></tr>
-        <tr><td>P30</td><td>40</td><td>5</td><td>1</td><td>2</td></tr>
-        <tr><td>P24</td><td>38</td><td>3</td><td>1</td><td>2</td></tr>
-        <tr><td>P10</td><td>35</td><td>2</td><td>0</td><td>3</td></tr>
-        <tr><td>P9</td><td>30</td><td>9</td><td>1</td><td>4</td></tr>
-        <tr><td>P4</td><td>28</td><td>7</td><td>1</td><td>2</td></tr>
-        <tr><td>P15</td><td>25</td><td>6</td><td>1</td><td>2</td></tr>
-        <tr><td>P17</td><td>20</td><td>8</td><td>1</td><td>4</td></tr>
-        <tr><td>P21</td><td>15</td><td>5</td><td>1</td><td>3</td></tr>
-    </tbody>
+<thead>
+<tr>
+    <th>Patient ID</th>
+    <th>Patient Satisfaction Score</th>
+    <th>Length of Stay (Days)</th>
+    <th>Complications</th>
+    <th>Patient to Nurse Ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>P13</td><td>95</td><td>4</td><td>1</td><td>2</td></tr>
+<tr><td>P1</td><td>92</td><td>7</td><td>0</td><td>3</td></tr>
+<tr><td>P6</td><td>90</td><td>5</td><td>1</td><td>3</td></tr>
+<tr><td>P20</td><td>88</td><td>2</td><td>1</td><td>4</td></tr>
+<tr><td>P12</td><td>86</td><td>6</td><td>1</td><td>3</td></tr>
+<tr><td>P23</td><td>83</td><td>3</td><td>0</td><td>4</td></tr>
+<tr><td>P19</td><td>81</td><td>5</td><td>1</td><td>2</td></tr>
+<tr><td>P2</td><td>78</td><td>7</td><td>1</td><td>4</td></tr>
+<tr><td>P28</td><td>75</td><td>3</td><td>1</td><td>3</td></tr>
+<tr><td>P27</td><td>72</td><td>6</td><td>1</td><td>4</td></tr>
+<tr><td>P26</td><td>70</td><td>3</td><td>1</td><td>2</td></tr>
+<tr><td>P18</td><td>68</td><td>3</td><td>1</td><td>2</td></tr>
+<tr><td>P11</td><td>65</td><td>4</td><td>1</td><td>3</td></tr>
+<tr><td>P14</td><td>62</td><td>8</td><td>1</td><td>4</td></tr>
+<tr><td>P8</td><td>60</td><td>5</td><td>0</td><td>3</td></tr>
+<tr><td>P25</td><td>58</td><td>2</td><td>1</td><td>3</td></tr>
+<tr><td>P16</td><td>55</td><td>2</td><td>1</td><td>4</td></tr>
+<tr><td>P22</td><td>53</td><td>7</td><td>0</td><td>3</td></tr>
+<tr><td>P5</td><td>50</td><td>4</td><td>0</td><td>2</td></tr>
+<tr><td>P7</td><td>48</td><td>8</td><td>0</td><td>3</td></tr>
+<tr><td>P29</td><td>45</td><td>5</td><td>1</td><td>3</td></tr>
+<tr><td>P3</td><td>42</td><td>8</td><td>0</td><td>2</td></tr>
+<tr><td>P30</td><td>40</td><td>5</td><td>1</td><td>2</td></tr>
+<tr><td>P24</td><td>38</td><td>3</td><td>1</td><td>2</td></tr>
+<tr><td>P10</td><td>35</td><td>2</td><td>0</td><td>3</td></tr>
+<tr><td>P9</td><td>30</td><td>9</td><td>1</td><td>4</td></tr>
+<tr><td>P4</td><td>28</td><td>7</td><td>1</td><td>2</td></tr>
+<tr><td>P15</td><td>25</td><td>6</td><td>1</td><td>2</td></tr>
+<tr><td>P17</td><td>20</td><td>8</td><td>1</td><td>4</td></tr>
+<tr><td>P21</td><td>15</td><td>5</td><td>1</td><td>3</td></tr>
+</tbody>
 </table>
 </body>
 </html>
@@ -196,3 +196,15 @@ The result of the t-test gives us a p-value. If the p-value is low (typically be
 Ultimately we decided (from our rigorous analysis of the tables, figures and statistical tests) to not "buy" our research question. It is important to note that when you do not find evidence for your research question, it doesn't mean that you say "It is not true" rather we say we did not find evidence in this study for it. Who knows, if we went to Costco on another day, we may have ran across that yummy Cretors Popcorn which almost always an insta-buy.😍
 
 ![](popcorn.jpg){fig-align="center" width="467"}
+
+# Extra Resources
+
+-   Free statistical software for students (<https://www.jmp.com/en_us/academic/jmp-student-edition.html>)
+
+-   Learn JMP: <https://community.jmp.com/t5/Learn-JMP/ct-p/learn-jmp>
+
+-   Dr. Lambert's Classes:
+
+    -   <https://joshuawlambert.github.io/NPHD9040/>
+
+    -   <https://joshuawlambert.github.io/NPHD9042/>
